@@ -1,10 +1,19 @@
-$('#input').on('keydown',
+$('#input').keyup(
     function () {
-        let textValue = $('#input').val();
-        printHtml(textValue);
+        const offset = 3;
+
+        let primordialString = $('#input').val(),
+            encryptedString = "";
+
+        for (let i = 0; i < primordialString.length; i++) {
+            let symbolCode = primordialString.charCodeAt(i);
+            symbolCode += offset;
+            encryptedString += String.fromCharCode(symbolCode);
+        }
+        printHtml(encryptedString);
     });
 
 
 function printHtml(data) {
-    $('#print_space').html(data);
+    $('#encrypted_string').html(data);
 }
